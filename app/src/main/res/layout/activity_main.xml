@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/frame_18"
+        android:layout_width="389dp"
+        android:layout_height="273dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="22dp"
+        android:background="@drawable/total"
+        android:elevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/frame_19"
+            android:layout_width="164dp"
+            android:layout_height="191dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="111dp"
+            android:layout_marginLeft="111dp"
+            android:layout_marginTop="49dp"
+            android:layout_marginEnd="111dp"
+            android:layout_marginBottom="33dp">
+
+            <TextView
+                android:id="@+id/toplamkarzararsonuc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="72dp"
+                android:layout_marginBottom="14dp"
+                android:gravity="center_horizontal|top"
+                android:text="@string/turish_lir"
+                android:textAppearance="@style/total_low" />
+
+            <TextView
+                android:id="@+id/total_inves"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="13dp"
+                android:layout_marginBottom="54dp"
+                android:gravity="center_horizontal|top"
+                android:text="@string/total_inves"
+                android:textAppearance="@style/total_big" />
+
+            <TextView
+                android:id="@+id/total_balan"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="13dp"
+                android:layout_marginEnd="13dp"
+                android:layout_marginBottom="45dp"
+                android:gravity="center_horizontal|top"
+                android:text="@string/total_balan"
+                android:textAppearance="@style/total_big" />
+
+            <TextView
+                android:id="@+id/toplampara"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="70dp"
+                android:layout_marginBottom="101dp"
+                android:gravity="center_horizontal|top"
+                android:text="@string/turish_lir"
+                android:textAppearance="@style/total_low" />
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/frame_20"
+        android:layout_width="340dp"
+        android:layout_height="62dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="324dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/portfolio"
+            android:layout_width="239dp"
+            android:layout_height="44dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="71dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_horizontal|top"
+            android:text="@string/portfolio"
+            android:textAppearance="@style/portfolio" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="294dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="19dp"
+            android:background="@drawable/newplus" />
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recview"
+        android:layout_width="260dp"
+        android:layout_height="330dp"
+        android:layout_marginTop="400dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.008"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/karzarar"
+        android:layout_width="143dp"
+        android:layout_height="330dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

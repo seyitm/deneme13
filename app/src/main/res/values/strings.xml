@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">deneme13</string>
+    <string name="total_inves"> INVESTMENT</string>
+    <string name="total_balan"> BALANCE</string>
+    <string name="turish_lir"> TRL</string>
+    <string name="portfolio">PORTFOLIO</string>
+    <string name="Enstruman">Enstruman</string>
+
+</resources>
