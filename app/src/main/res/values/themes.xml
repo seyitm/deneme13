@@ -20,7 +20,7 @@
     </style>
     <style name="total_low">
         <item name="android:textSize">15sp</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">#284B63</item>
         <item name="android:fontFamily">@font/bayon</item>
     </style>
     <style name="portfolio">

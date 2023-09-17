@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class borsaEndeks{
     public static HashMap<String, String> borsaveri(){
         long startTime = System.currentTimeMillis();
-        long waitTime = 2000; // 2 saniye (5000 milisaniye) beklemek için
+        long waitTime =5000; // 2 saniye (5000 milisaniye) beklemek için
 
 
             HashMap<String, String> sozlukforstocks = new HashMap<>();

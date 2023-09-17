@@ -1,9 +1,7 @@
 package com.example.deneme13;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,12 +15,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 public class MainActivity extends AppCompatActivity {
-    private static final int ARKA_PLAN_GECIKMESI = 2000;
+    private static final int ARKA_PLAN_GECIKMESI =0;
     Handler handler = new Handler(Looper.getMainLooper());
     ImageButton plus;
     Dialog ekleme;
@@ -32,73 +29,82 @@ public class MainActivity extends AppCompatActivity {
     EditText enstruman;
     EditText lotnum;
     EditText purchaseprice;
-    Double sum=0.0;
-    Double sumv2=0.0;
+    Double sum = 0.0;
+    Double sumv2 = 0.0;
     TextView totalbalancetxt;
     TextView totalInvestmenttxt;
+    public Integer count=0;
+    public boolean checkadd=false;
     public static SqlLiteHelper myDB;
     public static ArrayList<String> hisse;
     public static ArrayList<String> sayi;
     public static ArrayList<String> fiyat;
     public static ArrayList<String> karyazdir;
     public static ArrayList<Double> totalİnvestment;
+    public static ArrayList<String> güncelkur;
     customadapter customadapter;
-    uyumm adapter;
     HashMap<String, String> gelenveri;
     @Override
-    protected void onCreate(Bundle savedInstanceState){
-        ArrayList deneme=new ArrayList<>();
+    protected void onCreate(Bundle savedInstanceState) {
+        ArrayList deneme = new ArrayList<>();
         deneme.add(1);
         deneme.add(2);
         hisse = new ArrayList<>();
         sayi = new ArrayList<>();
         fiyat = new ArrayList<>();
         karyazdir = new ArrayList<>();
-        totalİnvestment=new ArrayList<>();
+        totalİnvestment = new ArrayList<>();
+        güncelkur = new ArrayList<>();
         myDB = new SqlLiteHelper(MainActivity.this);
-        Thread veriCekmeThread = new Thread(new Runnable(){
+        Thread veriCekmeThread = new Thread(new Runnable() {
             @Override
             public void run(){
                 while (true){
                     try {
                         takeDataArrays();
                         HashMap<String, String> data = borsaEndeks.borsaveri();
-                        for (String i:hisse){
-                            if (data.containsKey(i)) {
-                                totalİnvestment.add(Double.valueOf(data.get(i))*Double.valueOf(sayi.get(hisse.indexOf(i))));
-                                Double fark = (Double.valueOf(data.get(i)) - Double.valueOf(fiyat.get(hisse.indexOf(i))))*Double.valueOf(sayi.get(hisse.indexOf(i)));
-                                karyazdir.add(fark.toString());
+                        for (String i : hisse){
+                            if (data.containsKey(i)){
+                                güncelkur.add(data.get(i));
+                                totalİnvestment.add(Double.valueOf(data.get(i)) * Double.valueOf(sayi.get(hisse.indexOf(i))));
+                                Double fark = (Double.valueOf(data.get(i)) - Double.valueOf(fiyat.get(hisse.indexOf(i)))) * Double.valueOf(sayi.get(hisse.indexOf(i)));
 
+                                DecimalFormat df= new DecimalFormat("#.###");
+                                String tempfark=df.format(fark);
+                                karyazdir.add(tempfark);
                             }
                         }
-                        sum=0.0;
-                        for(String i:karyazdir){
-                             sum+=Double.valueOf(i.trim());
+                        sum = 0.0;
+                        for (int i=1;i<karyazdir.size();i++){
+                            sum += Double.valueOf(karyazdir.get(i).trim());
                         }
-                        sumv2=0.0;
-                        for(Double j:totalİnvestment){
-                            sumv2+=j;
+                        sumv2 = 0.0;
+                        for (Double j : totalİnvestment) {
+                            sumv2 += j;
                         }
-                        ArrayList karclone= (ArrayList) karyazdir.clone();
+                        ArrayList karclone = (ArrayList) karyazdir.clone();
+                        ArrayList güncelkurv2 = (ArrayList) güncelkur.clone();
                         handler.post(new Runnable(){
                             @Override
-                            public void run(){
-                                System.out.println("karlist"+karclone);
-                                kargunceltablo = findViewById(R.id.karzarar);
-                                kargunceltablo.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                                adapter = new uyumm(MainActivity.this,karclone,fiyat);
-                                kargunceltablo.setAdapter(adapter);
-                                totalbalancetxt=findViewById(R.id.toplamkarzararsonuc);
+                            public void run(){;
+                                recyclerView = findViewById(R.id.recview);
+                                recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                                customadapter = new customadapter(MainActivity.this, hisse, sayi, fiyat,güncelkurv2,karclone);
+                                customadapter.notifyDataSetChanged();
+                                recyclerView.setAdapter(customadapter);
+                                System.out.println("karlist" + karclone);
+                                totalbalancetxt = findViewById(R.id.toplamkarzararsonuc);
                                 totalbalancetxt.setText(sum.toString());
-                                totalInvestmenttxt=findViewById(R.id.toplampara);
+                                totalInvestmenttxt = findViewById(R.id.toplampara);
                                 totalInvestmenttxt.setText(sumv2.toString());
                             }
                         });
+                        güncelkur.clear();
                         totalİnvestment.clear();
                         karyazdir.clear();
 
                         Thread.sleep(ARKA_PLAN_GECIKMESI);
-                    } catch (InterruptedException e){
+                    } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
@@ -108,17 +114,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         plus = findViewById(R.id.imageButton);
-        recyclerView = findViewById(R.id.recview);
         ekleme = new Dialog(MainActivity.this);
         ekleme.setContentView(R.layout.eklemepage);
         addbutton = ekleme.findViewById(R.id.buttonadd);
         enstruman = ekleme.findViewById(R.id.enstruman);
         lotnum = ekleme.findViewById(R.id.lotNUM);
         purchaseprice = ekleme.findViewById(R.id.price);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        customadapter = new customadapter(MainActivity.this, hisse, sayi, fiyat);
-        recyclerView.setAdapter(customadapter);
-        plus.setOnClickListener(new View.OnClickListener(){
+        plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ekleme.show();
@@ -131,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     void takeDataArrays() {
         hisse.clear();
         sayi.clear();
@@ -148,7 +149,6 @@ public class MainActivity extends AppCompatActivity {
         }
         cursor.close();
     }
-
     private class BorsaVerisiTask extends AsyncTask<Void, Void, HashMap<String, String>> {
         @Override
         protected HashMap<String, String> doInBackground(Void... params) {
@@ -162,6 +162,11 @@ public class MainActivity extends AppCompatActivity {
                 if (gelenveri.containsKey(enstruman.getText().toString().trim())) {
                     myDB.addStock(enstruman.getText().toString().trim(), Integer.valueOf(lotnum.getText().toString().trim()), Float.valueOf(purchaseprice.getText().toString().trim()));
                     takeDataArrays();
+                    try {
+                        Thread.sleep(200);
+                    } catch (InterruptedException e){
+                        e.printStackTrace();
+                    }
                     customadapter.notifyDataSetChanged();
                     ekleme.dismiss();
                     enstruman.setText("");

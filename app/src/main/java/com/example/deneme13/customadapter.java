@@ -13,12 +13,14 @@ import java.util.ArrayList;
 
 public class customadapter extends RecyclerView.Adapter<customadapter.MyViewHolder>{
      Context context;
-     ArrayList<String>hisse,sayi,fiyat;
-     customadapter(Context context,ArrayList hisse,ArrayList sayi,ArrayList fiyat){
+     ArrayList<String>hisse,sayi,fiyat,güncelfiyat,tekilkar;
+     customadapter(Context context,ArrayList hisse,ArrayList sayi,ArrayList fiyat,ArrayList güncelfiyat,ArrayList tekilkar){
          this.context=context;
          this.hisse=hisse;
          this.sayi=sayi;
          this.fiyat=fiyat;
+         this.güncelfiyat=güncelfiyat;
+         this.tekilkar=tekilkar;
      }
     @NonNull
     @Override
@@ -33,6 +35,8 @@ public class customadapter extends RecyclerView.Adapter<customadapter.MyViewHold
         holder.hissetxt.setText(String.valueOf(hisse.get(position)));
          holder.lottxt.setText(String.valueOf(sayi.get(position)));
          holder.fiyattxt.setText(String.valueOf(fiyat.get(position)));
+         holder.gunceltxt.setText(String.valueOf(güncelfiyat.get(position)));
+         holder.instantbalancetxt.setText(String.valueOf(tekilkar.get(position)));
 
     }
 
@@ -41,13 +45,15 @@ public class customadapter extends RecyclerView.Adapter<customadapter.MyViewHold
         return sayi.size(); }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-         TextView hissetxt,lottxt,fiyattxt,dengetxt;
+         TextView hissetxt,lottxt,fiyattxt,gunceltxt,instantbalancetxt;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             hissetxt=itemView.findViewById(R.id.stocksymbol);
             lottxt=itemView.findViewById(R.id.lotsayisi);
             fiyattxt=itemView.findViewById(R.id.alisfiyati);
-            dengetxt=itemView.findViewById(R.id.balance);
+            gunceltxt=itemView.findViewById(R.id.guncelfiyat);
+            instantbalancetxt=itemView.findViewById(R.id.anlikkar);
+
         }
     }
 }

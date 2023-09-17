@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,11 +11,15 @@
         android:id="@+id/frame_18"
         android:layout_width="389dp"
         android:layout_height="273dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="22dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="29dp"
         android:layout_marginEnd="22dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/total"
         android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,26 +42,30 @@
 
             <TextView
                 android:id="@+id/toplamkarzararsonuc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginEnd="72dp"
-                android:layout_marginBottom="14dp"
-                android:gravity="center_horizontal|top"
-                android:text="@string/turish_lir"
-                android:textAppearance="@style/total_low" />
-
-            <TextView
-                android:id="@+id/total_inves"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
                 android:layout_marginStart="13dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="13dp"
+                android:layout_marginTop="150dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="14dp"
+                android:gravity="center_horizontal|top"
+                android:text="@string/turish_lir"
+                android:textAppearance="@style/total_big" />
+
+            <TextView
+                android:id="@+id/total_inves"
+                android:layout_width="131dp"
+                android:layout_height="44dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="54dp"
                 android:gravity="center_horizontal|top"
                 android:text="@string/total_inves"
@@ -66,40 +74,50 @@
             <TextView
                 android:id="@+id/total_balan"
                 android:layout_width="140dp"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="13dp"
+                android:layout_marginStart="14dp"
                 android:layout_marginEnd="13dp"
-                android:layout_marginBottom="45dp"
+                android:layout_marginBottom="47dp"
                 android:gravity="center_horizontal|top"
                 android:text="@string/total_balan"
                 android:textAppearance="@style/total_big" />
 
             <TextView
                 android:id="@+id/toplampara"
-                android:layout_width="wrap_content"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginEnd="70dp"
-                android:layout_marginBottom="101dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="67dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="97dp"
                 android:gravity="center_horizontal|top"
                 android:text="@string/turish_lir"
-                android:textAppearance="@style/total_low" />
+                android:textAppearance="@style/total_big" />
 
 
         </RelativeLayout>
+
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/frame_20"
         android:layout_width="340dp"
         android:layout_height="62dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="324dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="34dp"
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="327dp"
+        android:layout_marginEnd="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
@@ -136,23 +154,79 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recview"
-        android:layout_width="260dp"
-        android:layout_height="330dp"
-        android:layout_marginTop="400dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.008"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent"
+        android:layout_height="308dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="423dp"
+        android:layout_marginEnd="0dp"
+        tools:layout_editor_absoluteY="405dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/karzarar"
-        android:layout_width="143dp"
-        android:layout_height="330dp"
-        android:layout_marginTop="400dp"
-        android:layout_marginEnd="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/frame_20"
+        android:layout_gravity="center"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="113dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/stocksymboltxt"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Stock"
+                android:textAppearance="@style/total_low"/>
+
+            <TextView
+                android:id="@+id/lotsayisitxt"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="lot sayisi"
+                android:textAppearance="@style/total_low"/>
+
+            <TextView
+                android:id="@+id/alisfiyatitxt"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="alis fiyat"
+                android:textAppearance="@style/total_low"/>
+
+            <TextView
+                android:id="@+id/guncelfiyattxt"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:text="guncel fiyat"
+                android:textAppearance="@style/total_low"/>
+
+            <TextView
+                android:id="@+id/anlikkartxt"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="anlik kar"
+                android:textAppearance="@style/total_low"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
 
 
