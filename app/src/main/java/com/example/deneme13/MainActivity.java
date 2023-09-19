@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
     Double sumv2 = 0.0;
     TextView totalbalancetxt;
     TextView totalInvestmenttxt;
-    public Integer count=0;
-    public boolean checkadd=false;
     public static SqlLiteHelper myDB;
     public static ArrayList<String> hisse;
     public static ArrayList<String> sayi;
@@ -45,10 +43,7 @@ public class MainActivity extends AppCompatActivity {
     customadapter customadapter;
     HashMap<String, String> gelenveri;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        ArrayList deneme = new ArrayList<>();
-        deneme.add(1);
-        deneme.add(2);
+    protected void onCreate(Bundle savedInstanceState){
         hisse = new ArrayList<>();
         sayi = new ArrayList<>();
         fiyat = new ArrayList<>();
@@ -56,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         totalİnvestment = new ArrayList<>();
         güncelkur = new ArrayList<>();
         myDB = new SqlLiteHelper(MainActivity.this);
-        Thread veriCekmeThread = new Thread(new Runnable() {
+        Thread veriCekmeThread = new Thread(new Runnable(){
             @Override
             public void run(){
                 while (true){
@@ -68,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
                                 güncelkur.add(data.get(i));
                                 totalİnvestment.add(Double.valueOf(data.get(i)) * Double.valueOf(sayi.get(hisse.indexOf(i))));
                                 Double fark = (Double.valueOf(data.get(i)) - Double.valueOf(fiyat.get(hisse.indexOf(i)))) * Double.valueOf(sayi.get(hisse.indexOf(i)));
-
                                 DecimalFormat df= new DecimalFormat("#.###");
                                 String tempfark=df.format(fark);
                                 karyazdir.add(tempfark);
@@ -116,11 +110,12 @@ public class MainActivity extends AppCompatActivity {
         plus = findViewById(R.id.imageButton);
         ekleme = new Dialog(MainActivity.this);
         ekleme.setContentView(R.layout.eklemepage);
+        ekleme.getWindow().setBackgroundDrawableResource(R.drawable.eklemebackground);
         addbutton = ekleme.findViewById(R.id.buttonadd);
         enstruman = ekleme.findViewById(R.id.enstruman);
         lotnum = ekleme.findViewById(R.id.lotNUM);
         purchaseprice = ekleme.findViewById(R.id.price);
-        plus.setOnClickListener(new View.OnClickListener() {
+        plus.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 ekleme.show();
@@ -133,15 +128,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    void takeDataArrays() {
+    void takeDataArrays(){
         hisse.clear();
         sayi.clear();
         fiyat.clear();
         Cursor cursor = myDB.readAllData();
-        if (cursor.getCount() == 0) {
-            Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();
+        if (cursor.getCount() == 0){
         } else {
-            while (cursor.moveToNext()) {
+            while (cursor.moveToNext()){
                 hisse.add(cursor.getString(0));
                 sayi.add(cursor.getString(1));
                 fiyat.add(cursor.getString(2));
@@ -159,15 +153,15 @@ public class MainActivity extends AppCompatActivity {
             // İşlem tamamlandığında sonuçları işleme
             if (result != null) {
                 gelenveri = result;
-                if (gelenveri.containsKey(enstruman.getText().toString().trim())) {
+                if (gelenveri.containsKey(enstruman.getText().toString().trim())){
                     myDB.addStock(enstruman.getText().toString().trim(), Integer.valueOf(lotnum.getText().toString().trim()), Float.valueOf(purchaseprice.getText().toString().trim()));
                     takeDataArrays();
                     try {
-                        Thread.sleep(200);
+                        Thread.sleep(500);
                     } catch (InterruptedException e){
                         e.printStackTrace();
                     }
-                    customadapter.notifyDataSetChanged();
+                  //  customadapter.notifyDataSetChanged();
                     ekleme.dismiss();
                     enstruman.setText("");
                     lotnum.setText("");

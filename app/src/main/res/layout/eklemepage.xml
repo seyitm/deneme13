@@ -10,13 +10,12 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/Enstruman"
+        android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:fontFamily="@font/bayon"/>
+        android:textAppearance="@style/ekleme"/>
 
     <EditText
         android:background="@drawable/background_edit_text"
@@ -29,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:inputType="text"
-        android:digits="0,1,2,3,4,5,6,7,8,9,*,qwertzuiopasdfghjklyxcvbnmQWERTZUİOPASDFGHJKLYXCVBNM"
+        android:digits="0,1,2,3,4,5,6,7,8,9,*,qwertzuiıopasdfghjklyxcvbnmQWERTZUİIOPASDFGHJKLYXCVBNM"
         android:hint="
 enter stock symbol here"
         android:paddingLeft="20dp"></EditText>
@@ -43,7 +42,7 @@ enter stock symbol here"
         app:layout_constraintHorizontal_bias="0.519"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:fontFamily="@font/bayon"
+        android:textAppearance="@style/ekleme"
         />
 
     <EditText
@@ -67,24 +66,24 @@ enter stock symbol here"
         android:layout_height="wrap_content"
         android:layout_marginTop="340dp"
         android:text="ADD"
-        app:backgroundTint="@color/darkbackground"
+        app:backgroundTint="@color/newblue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.541"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:fontFamily="@font/bayon"/>
+        />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="244dp"
+        android:layout_marginTop="240dp"
         android:text="Purchase Price"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.552"
+        app:layout_constraintHorizontal_bias="0.553"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:fontFamily="@font/bayon"/>
+        android:textAppearance="@style/ekleme"/>
 
     <EditText
         android:background="@drawable/background_edit_text"
